@@ -1,8 +1,8 @@
 <div class="w-full max-w-md mx-auto">
     <!-- Tarjeta del formulario -->
-    <div class="rounded-3xl bg-white border border-slate-200 shadow-xl shadow-slate-200/50 p-6 sm:p-8">
+    <div class="rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700/80 shadow-xl shadow-slate-200/50 dark:shadow-slate-950/50 p-6 sm:p-8">
         <div class="text-center mb-8">
-            <span class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-rose-50 text-2xl mb-3 shadow-2xs border border-rose-100">
+            <span class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-rose-50 dark:bg-rose-900/40 text-2xl mb-3 shadow-2xs border border-rose-100 dark:border-rose-800/60">
                 🔐
             </span>
             <h1 class="text-2xl font-black text-slate-900 tracking-tight">
