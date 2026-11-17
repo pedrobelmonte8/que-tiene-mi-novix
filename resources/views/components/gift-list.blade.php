@@ -1,178 +1,24 @@
 @props(['categories' => null])
 
 @php
-    $categories = $categories ?? [
-        [
-            'id' => 'ropa',
-            'icon' => '👗',
-            'title' => 'Ropa y Calzado',
-            'tag' => 'Moda & Accesorios',
-            'tag_color' => 'bg-pink-100 text-pink-800 border-pink-200',
-            'items' => [
-                [
-                    'name' => 'Sudadera Oversize con Capucha',
-                    'price' => '39,99 €',
-                    'store' => 'Zara / Uniqlo',
-                    'note' => 'Talla M. Prefiere colores neutros (beige, gris claro o verde oliva). Con tela suave por dentro.',
-                    'badge' => '⭐ Prioridad Alta',
-                    'badge_color' => 'bg-amber-100 text-amber-800 border-amber-200',
-                ],
-                [
-                    'name' => 'Zapatillas Casual Blancas',
-                    'price' => '85,00 €',
-                    'store' => 'Adidas / Foot Locker',
-                    'note' => 'Talla 39. Modelo clásico básico que combine con vaqueros o vestidos.',
-                    'badge' => 'Deseado',
-                    'badge_color' => 'bg-slate-100 text-slate-700 border-slate-200',
-                ],
-                [
-                    'name' => 'Bufanda de Lana Gruesa',
-                    'price' => '22,50 €',
-                    'store' => 'Mango / Pull&Bear',
-                    'note' => 'Que no pique, suave y calentita para invierno.',
-                    'badge' => 'Detalle',
-                    'badge_color' => 'bg-rose-50 text-rose-700 border-rose-200',
-                ],
-            ],
-        ],
-        [
-            'id' => 'maquillaje',
-            'icon' => '💄',
-            'title' => 'Maquillaje & Belleza',
-            'tag' => 'Beauty',
-            'tag_color' => 'bg-rose-100 text-rose-800 border-rose-200',
-            'items' => [
-                [
-                    'name' => 'Gloss Labial Hidratante Gloss Bomb',
-                    'price' => '24,00 €',
-                    'store' => 'Sephora (Fenty Beauty)',
-                    'note' => 'Tono "Fenty Glow" o "Fu$$y". Le encanta que no quede pegajoso y huela a vainilla.',
-                    'badge' => '⭐ Top Deseo',
-                    'badge_color' => 'bg-rose-100 text-rose-800 border-rose-200',
-                ],
-                [
-                    'name' => 'Colorete Líquido Soft Pinch',
-                    'price' => '27,90 €',
-                    'store' => 'Sephora (Rare Beauty)',
-                    'note' => 'Tono "Hope" o "Happy" (acabado jugoso). Dice que dura todo el día con una sola gota.',
-                    'badge' => 'Favorito',
-                    'badge_color' => 'bg-pink-100 text-pink-700 border-pink-200',
-                ],
-            ],
-        ],
-        [
-            'id' => 'cremas',
-            'icon' => '🧴',
-            'title' => 'Cremas & Skincare',
-            'tag' => 'Cuidado Personal',
-            'tag_color' => 'bg-teal-100 text-teal-800 border-teal-200',
-            'items' => [
-                [
-                    'name' => 'Sérum Ácido Hialurónico + B5',
-                    'price' => '12,90 €',
-                    'store' => 'Primor / Druni (The Ordinary)',
-                    'note' => 'Usa este religiosamente después de lavarse la cara por la mañana. Se le está agotando.',
-                    'badge' => 'Necesario',
-                    'badge_color' => 'bg-teal-100 text-teal-800 border-teal-200',
-                ],
-                [
-                    'name' => 'Crema Hidratante Ultra Facial Cream',
-                    'price' => '36,00 €',
-                    'store' => 'Kiehl’s / El Corte Inglés',
-                    'note' => 'Textura ligera para piel mixta, sin aroma fuerte.',
-                    'badge' => 'Deseado',
-                    'badge_color' => 'bg-slate-100 text-slate-700 border-slate-200',
-                ],
-            ],
-        ],
-        [
-            'id' => 'comida',
-            'icon' => '🍣',
-            'title' => 'Comida & Experiencias Gastro',
-            'tag' => 'Gourmet',
-            'tag_color' => 'bg-amber-100 text-amber-800 border-amber-200',
-            'items' => [
-                [
-                    'name' => 'Cena Menú Degustación de Sushi o Ramen',
-                    'price' => '~55,00 €',
-                    'store' => 'Restaurante japonés favorito del centro',
-                    'note' => 'Hacer reserva sorpresa para viernes noche. Pedir mesa tranquila.',
-                    'badge' => '⭐ Cita Romántica',
-                    'badge_color' => 'bg-amber-100 text-amber-800 border-amber-200',
-                ],
-                [
-                    'name' => 'Caja de Bombones Belgas Artesanales',
-                    'price' => '16,50 €',
-                    'store' => 'Pastelería local / Leonidas',
-                    'note' => 'Solo chocolate negro y praliné (sin naranja ni menta).',
-                    'badge' => 'Detalle dulce',
-                    'badge_color' => 'bg-orange-100 text-orange-800 border-orange-200',
-                ],
-            ],
-        ],
-        [
-            'id' => 'juguetes',
-            'icon' => '🎮',
-            'title' => 'Juguetes, Juegos & Hobbies',
-            'tag' => 'Entretenimiento',
-            'tag_color' => 'bg-indigo-100 text-indigo-800 border-indigo-200',
-            'items' => [
-                [
-                    'name' => 'Set LEGO Flores Botánicas (Orquídea)',
-                    'price' => '44,99 €',
-                    'store' => 'Amazon / LEGO Store',
-                    'note' => 'Para armarlo juntos un domingo por la tarde y dejarlo de adorno en su escritorio.',
-                    'badge' => '⭐ Top Deseo',
-                    'badge_color' => 'bg-indigo-100 text-indigo-800 border-indigo-200',
-                ],
-                [
-                    'name' => 'Juego de Cartas Cooperativo (The Mind / Codenames)',
-                    'price' => '15,00 €',
-                    'store' => 'Zacatrus / Librería',
-                    'note' => 'Ideal para jugar de a 2 en viajes o cafés.',
-                    'badge' => 'Para jugar juntos',
-                    'badge_color' => 'bg-slate-100 text-slate-700 border-slate-200',
-                ],
-            ],
-        ],
-        [
-            'id' => 'otros',
-            'icon' => '🎁',
-            'title' => 'Otros & Detalles Especiales',
-            'tag' => 'Sorpresas',
-            'tag_color' => 'bg-purple-100 text-purple-800 border-purple-200',
-            'items' => [
-                [
-                    'name' => 'Álbum Fotográfico con Recuerdos del Año',
-                    'price' => '24,00 €',
-                    'store' => 'Cheerz / Hoffman (Online)',
-                    'note' => 'Incluir fotos de viajes y anécdotas escritas a mano con stickers.',
-                    'badge' => 'Sentimental 🥹',
-                    'badge_color' => 'bg-purple-100 text-purple-800 border-purple-200',
-                ],
-                [
-                    'name' => 'Vela Aromática de Soja (Vainilla & Sándalo)',
-                    'price' => '18,50 €',
-                    'store' => 'Zara Home / Rituals',
-                    'note' => 'Para prender cuando lee o se baña. Vaso bonito reutilizable.',
-                    'badge' => 'Relax',
-                    'badge_color' => 'bg-rose-50 text-rose-700 border-rose-200',
-                ],
-            ],
-        ],
-    ];
+    // Si no se pasan categorías, usamos las predeterminadas del modelo Gift
+    $categories = $categories ?? collect(\App\Models\Gift::CATEGORIES)->map(function ($meta) {
+        $meta['items'] = collect();
+        return $meta;
+    })->values()->all();
 @endphp
 
 <div>
     <!-- Encabezado de la lista -->
-    <header class="text-center mb-10">
-        <span
-            class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-rose-100 text-rose-700 mb-3 shadow-xs border border-rose-200">
-            🎁 Lista de Deseos & Regalos
+    <header class="text-center mb-8">
+        <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-rose-100 text-rose-700 mb-3 shadow-xs border border-rose-200">
+            🎁 Mi Lista de Regalos Personal
         </span>
+        <h1 class="text-3xl sm:text-4xl font-black tracking-tight text-slate-900 mb-2">
+            ¿Qué regalar a mi novix?
+        </h1>
         <p class="text-slate-500 text-sm sm:text-base max-w-lg mx-auto">
-            Ideas organizadas por categorías con precios, tiendas y notas secretas. Toca cada tarjeta para ver los
-            artículos.
+            Tus ideas organizadas por categoría. Abre cualquier tarjeta para añadir, modificar o eliminar artículos.
         </p>
     </header>
 
@@ -182,27 +28,33 @@
             @php
                 $isOpen = $loop->first;
                 $zIndex = ($index + 1) * 10;
-                $itemsCount = count($category['items']);
+                $items = $category['items'] ?? [];
+                $itemsCount = count($items);
             @endphp
 
-            <article data-accordion-item data-open="{{ $isOpen ? 'true' : 'false' }}" style="z-index: {{ $zIndex }};"
-                class="relative group rounded-2xl bg-white border border-slate-200/90 shadow-[0_-3px_10px_rgba(0,0,0,0.04),0_6px_14px_rgba(0,0,0,0.06)] transition-all duration-300 first:mt-0 -mt-4 sm:-mt-5 hover:-translate-y-1 hover:border-slate-300 data-[open=true]:translate-y-0 data-[open=true]:border-rose-400 data-[open=true]:ring-4 data-[open=true]:ring-rose-100/70 data-[open=true]:shadow-xl">
+            <article
+                data-accordion-item
+                data-open="{{ $isOpen ? 'true' : 'false' }}"
+                style="z-index: {{ $zIndex }};"
+                class="relative group rounded-2xl bg-white border border-slate-200/90 shadow-[0_-3px_10px_rgba(0,0,0,0.04),0_6px_14px_rgba(0,0,0,0.06)] transition-all duration-300 first:mt-0 -mt-4 sm:-mt-5 hover:-translate-y-1 hover:border-slate-300 data-[open=true]:translate-y-0 data-[open=true]:border-rose-400 data-[open=true]:ring-4 data-[open=true]:ring-rose-100/70 data-[open=true]:shadow-xl"
+            >
                 <!-- Cabecera / Categoría (siempre visible) -->
-                <button type="button" data-accordion-trigger aria-expanded="{{ $isOpen ? 'true' : 'false' }}"
-                    class="w-full flex items-center justify-between p-4 sm:p-5 text-left cursor-pointer select-none focus:outline-hidden">
+                <button
+                    type="button"
+                    data-accordion-trigger
+                    aria-expanded="{{ $isOpen ? 'true' : 'false' }}"
+                    class="w-full flex items-center justify-between p-4 sm:p-5 text-left cursor-pointer select-none focus:outline-hidden"
+                >
                     <div class="flex items-center gap-3.5 min-w-0 pr-3">
-                        <span
-                            class="shrink-0 flex items-center justify-center w-11 h-11 rounded-xl bg-slate-100 text-2xl group-hover:scale-105 group-data-[open=true]:bg-rose-100 transition-all duration-300 shadow-xs">
+                        <span class="shrink-0 flex items-center justify-center w-11 h-11 rounded-xl bg-slate-100 text-2xl group-hover:scale-105 group-data-[open=true]:bg-rose-100 transition-all duration-300 shadow-xs">
                             {{ $category['icon'] }}
                         </span>
                         <div class="truncate">
                             <div class="flex items-center gap-2">
-                                <h2
-                                    class="text-base sm:text-lg font-bold text-slate-800 group-data-[open=true]:text-rose-600 transition-colors duration-200 truncate">
+                                <h2 class="text-base sm:text-lg font-bold text-slate-800 group-data-[open=true]:text-rose-600 transition-colors duration-200 truncate">
                                     {{ $category['title'] }}
                                 </h2>
-                                <span
-                                    class="hidden sm:inline-flex items-center px-2 py-0.5 rounded-full text-2xs font-semibold {{ $category['tag_color'] }}">
+                                <span class="hidden sm:inline-flex items-center px-2 py-0.5 rounded-full text-2xs font-semibold {{ $category['tag_color'] }}">
                                     {{ $category['tag'] }}
                                 </span>
                             </div>
@@ -214,12 +66,10 @@
 
                     <!-- Badge con contador y flecha giratoria -->
                     <div class="shrink-0 flex items-center gap-2.5">
-                        <span
-                            class="inline-flex items-center justify-center px-2.5 py-1 rounded-full text-xs font-semibold bg-slate-100 text-slate-600 group-data-[open=true]:bg-rose-100 group-data-[open=true]:text-rose-700 transition-colors">
+                        <span class="inline-flex items-center justify-center px-2.5 py-1 rounded-full text-xs font-semibold bg-slate-100 text-slate-600 group-data-[open=true]:bg-rose-100 group-data-[open=true]:text-rose-700 transition-colors">
                             {{ $itemsCount }} ideas
                         </span>
-                        <div
-                            class="flex items-center justify-center w-8 h-8 rounded-lg text-slate-400 group-hover:text-slate-600 group-data-[open=true]:text-rose-500 group-data-[open=true]:rotate-180 transition-all duration-300">
+                        <div class="flex items-center justify-center w-8 h-8 rounded-lg text-slate-400 group-hover:text-slate-600 group-data-[open=true]:text-rose-500 group-data-[open=true]:rotate-180 transition-all duration-300">
                             <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                             </svg>
@@ -228,72 +78,159 @@
                 </button>
 
                 <!-- Lista de Artículos desplegable -->
-                <div
-                    class="grid transition-all duration-300 ease-in-out group-data-[open=true]:grid-rows-[1fr] group-data-[open=false]:grid-rows-[0fr]">
+                <div class="grid transition-all duration-300 ease-in-out group-data-[open=true]:grid-rows-[1fr] group-data-[open=false]:grid-rows-[0fr]">
                     <div class="overflow-hidden">
                         <div class="p-4 sm:p-6 pt-0 pb-7 sm:pb-8 border-t border-slate-100 space-y-4">
-                            <div class="space-y-3.5 pt-3">
-                                @foreach ($category['items'] as $itemIndex => $item)
-                                    <div
-                                        class="p-4 rounded-xl bg-slate-50/80 border border-slate-200/80 hover:bg-white hover:border-slate-300 hover:shadow-xs transition-all duration-200">
-                                        <!-- Nombre y Precio -->
-                                        <div class="flex items-start justify-between gap-3 mb-2.5">
-                                            <div class="flex-1">
-                                                <div class="flex items-center gap-2 flex-wrap">
-                                                    <h3 class="font-bold text-slate-900 text-sm sm:text-base">
-                                                        {{ $item['name'] }}
-                                                    </h3>
-                                                    @if (!empty($item['badge']))
-                                                        <span
-                                                            class="inline-flex items-center px-2 py-0.5 rounded-md text-2xs font-semibold border {{ $item['badge_color'] }}">
-                                                            {{ $item['badge'] }}
-                                                        </span>
+                            <!-- Barra de acción superior de la categoría -->
+                            <div class="flex items-center justify-between pt-3 pb-1 border-b border-slate-100/80">
+                                <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">
+                                    Artículos en esta lista
+                                </span>
+                                <button
+                                    type="button"
+                                    onclick="openCreateGiftModal('{{ $category['id'] }}', '{{ $category['title'] }}', '{{ $category['icon'] }}')"
+                                    class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl font-bold text-xs bg-rose-600 hover:bg-rose-700 text-white shadow-xs shadow-rose-600/20 active:scale-95 transition-all cursor-pointer select-none"
+                                >
+                                    <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4" />
+                                    </svg>
+                                    <span>Añadir artículo</span>
+                                </button>
+                            </div>
+
+                            <!-- Listado de Artículos -->
+                            @if ($itemsCount > 0)
+                                <div class="space-y-3 pt-1">
+                                    @foreach ($items as $item)
+                                        @php
+                                            $itemArray = is_array($item) ? $item : $item->toArray();
+                                            $itemId = $itemArray['id'] ?? null;
+                                            $itemName = $itemArray['name'] ?? '';
+                                            $itemPrice = $itemArray['price'] ?? '';
+                                            $itemStore = $itemArray['store'] ?? '';
+                                            $itemBadge = $itemArray['badge'] ?? '';
+                                            $itemNote = $itemArray['note'] ?? '';
+                                        @endphp
+
+                                        <div class="p-4 rounded-2xl bg-slate-50/80 border border-slate-200/80 hover:bg-white hover:border-slate-300 hover:shadow-xs transition-all duration-200 group/item">
+                                            <!-- Fila Superior: Nombre, Badge y Acciones -->
+                                            <div class="flex items-start justify-between gap-3 mb-2">
+                                                <div class="flex-1 min-w-0">
+                                                    <div class="flex items-center gap-2 flex-wrap">
+                                                        <h3 class="font-bold text-slate-900 text-sm sm:text-base">
+                                                            {{ $itemName }}
+                                                        </h3>
+                                                        @if (!empty($itemBadge))
+                                                            <span class="inline-flex items-center px-2 py-0.5 rounded-md text-2xs font-semibold bg-rose-50 text-rose-700 border border-rose-200">
+                                                                {{ $itemBadge }}
+                                                            </span>
+                                                        @endif
+                                                    </div>
+
+                                                    <!-- Dónde Comprarlo -->
+                                                    @if (!empty($itemStore))
+                                                        <div class="flex items-center gap-1.5 text-xs text-slate-500 mt-1">
+                                                            <span class="text-rose-500">📍</span>
+                                                            <span class="font-medium text-slate-700">Dónde comprar:</span>
+                                                            <span class="bg-white px-2 py-0.5 rounded border border-slate-200 text-slate-700 font-medium">
+                                                                {{ $itemStore }}
+                                                            </span>
+                                                        </div>
                                                     @endif
                                                 </div>
 
-                                                <!-- Dónde comprarlo -->
-                                                <div class="flex items-center gap-1.5 text-xs text-slate-500 mt-1">
-                                                    <span class="text-rose-500">📍</span>
-                                                    <span class="font-medium text-slate-700">Dónde comprar:</span>
-                                                    <span
-                                                        class="bg-white px-2 py-0.5 rounded border border-slate-200 text-slate-700 font-medium">
-                                                        {{ $item['store'] }}
-                                                    </span>
+                                                <!-- Precio y Acciones (Editar y Eliminar) -->
+                                                <div class="shrink-0 flex items-center gap-2">
+                                                    @if (!empty($itemPrice))
+                                                        <span class="inline-flex items-center px-2.5 py-1 rounded-lg text-xs sm:text-sm font-extrabold bg-emerald-50 text-emerald-700 border border-emerald-200 shadow-2xs">
+                                                            {{ $itemPrice }}
+                                                        </span>
+                                                    @endif
+
+                                                    @if ($itemId)
+                                                        <!-- Botón Modificar / Editar -->
+                                                        <button
+                                                            type="button"
+                                                            title="Modificar artículo"
+                                                            onclick='openEditGiftModal(@json($itemArray))'
+                                                            class="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-200/70 transition-colors cursor-pointer"
+                                                        >
+                                                            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                                                            </svg>
+                                                        </button>
+
+                                                        <!-- Botón Eliminar -->
+                                                        <form
+                                                            action="{{ route('gifts.destroy', $itemId) }}"
+                                                            method="POST"
+                                                            onsubmit="return confirm('¿Seguro/a que deseas eliminar «{{ addslashes($itemName) }}» de tu lista?');"
+                                                            class="inline"
+                                                        >
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button
+                                                                type="submit"
+                                                                title="Eliminar artículo"
+                                                                class="p-1.5 rounded-lg text-slate-400 hover:text-rose-600 hover:bg-rose-50 transition-colors cursor-pointer"
+                                                            >
+                                                                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                                                </svg>
+                                                            </button>
+                                                        </form>
+                                                    @endif
                                                 </div>
                                             </div>
 
-                                            <!-- Precio destacado -->
-                                            <div class="shrink-0 text-right">
-                                                <span
-                                                    class="inline-flex items-center px-2.5 py-1 rounded-lg text-xs sm:text-sm font-extrabold bg-emerald-50 text-emerald-700 border border-emerald-200 shadow-2xs">
-                                                    {{ $item['price'] }}
-                                                </span>
-                                            </div>
-                                        </div>
-
-                                        <!-- Campo de Nota personalizada -->
-                                        <div class="mt-2.5 pt-2.5 border-t border-slate-200/60">
-                                            <div
-                                                class="flex items-start gap-2 rounded-lg bg-white p-2.5 border border-slate-200/70 shadow-2xs">
-                                                <span class="text-slate-400 text-xs shrink-0 select-none">📝</span>
-                                                <div class="w-full">
-                                                    <label
-                                                        class="block text-2xs font-bold uppercase tracking-wider text-slate-400 mb-0.5 select-none">
-                                                        Nota / Detalles
-                                                    </label>
-                                                    <p class="text-xs sm:text-sm text-slate-700 leading-relaxed font-normal">
-                                                        {{ $item['note'] }}
-                                                    </p>
+                                            <!-- Nota / Detalles -->
+                                            @if (!empty($itemNote))
+                                                <div class="mt-2.5 pt-2.5 border-t border-slate-200/60">
+                                                    <div class="flex items-start gap-2 rounded-lg bg-white p-2.5 border border-slate-200/70 shadow-2xs">
+                                                        <span class="text-slate-400 text-xs shrink-0 select-none">📝</span>
+                                                        <div class="w-full">
+                                                            <label class="block text-2xs font-bold uppercase tracking-wider text-slate-400 mb-0.5 select-none">
+                                                                Nota / Detalles
+                                                            </label>
+                                                            <p class="text-xs sm:text-sm text-slate-700 leading-relaxed font-normal">
+                                                                {{ $itemNote }}
+                                                            </p>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            @endif
                                         </div>
-                                    </div>
-                                @endforeach
-                            </div>
+                                    @endforeach
+                                </div>
+                            @else
+                                <!-- Estado vacío si la categoría no tiene artículos -->
+                                <div class="text-center py-7 px-4 rounded-2xl border border-dashed border-slate-200 bg-slate-50/50">
+                                    <span class="text-3xl block mb-2 select-none">✨</span>
+                                    <p class="text-xs sm:text-sm font-semibold text-slate-700 mb-1">
+                                        Aún no tienes regalos en {{ $category['title'] }}
+                                    </p>
+                                    <p class="text-2xs sm:text-xs text-slate-400 mb-3 max-w-xs mx-auto">
+                                        Guarda ideas que mencione en conversaciones, tallas o cosas que le gusten.
+                                    </p>
+                                    <button
+                                        type="button"
+                                        onclick="openCreateGiftModal('{{ $category['id'] }}', '{{ $category['title'] }}', '{{ $category['icon'] }}')"
+                                        class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl font-bold text-xs bg-rose-600 hover:bg-rose-700 text-white shadow-xs shadow-rose-600/20 active:scale-95 transition-all cursor-pointer select-none"
+                                    >
+                                        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4" />
+                                        </svg>
+                                        <span>Añadir el primer artículo</span>
+                                    </button>
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>
             </article>
         @endforeach
     </div>
+
+    <!-- Componente Modal para Crear y Modificar Artículos -->
+    <x-gift-modal />
 </div>
