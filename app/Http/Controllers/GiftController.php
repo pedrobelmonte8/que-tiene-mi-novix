@@ -15,10 +15,20 @@ class GiftController extends Controller
      */
     public function index(Request $request): View
     {
-        $userGifts = $request->user()->gifts()->latest()->get()->groupBy('category');
+        $user = $request->user();
+        $userLists = $user->giftLists()->latest()->get();
 
-        $categories = collect(Gift::CATEGORIES)->map(function ($meta, $key) use ($userGifts) {
-            $meta['items'] = $userGifts->get($key, collect());
+        $activeListId = $request->query('list', $request->session()->get('active_list_id'));
+        $activeList = $userLists->firstWhere('id', (int) $activeListId) ?? $userLists->first();
+
+        if ($activeList) {
+            $request->session()->put('active_list_id', $activeList->id);
+        }
+
+        $categories = collect(Gift::CATEGORIES)->map(function ($meta, $key) use ($activeList) {
+            $meta['items'] = $activeList
+                ? $activeList->gifts()->where('category', $key)->latest()->get()
+                : collect();
 
             return $meta;
         })->values()->all();
@@ -26,6 +36,8 @@ class GiftController extends Controller
         return view('index', [
             'currentView' => 'gifts',
             'categories' => $categories,
+            'userLists' => $userLists,
+            'activeList' => $activeList,
         ]);
     }
 
@@ -35,6 +47,7 @@ class GiftController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $validated = $request->validate([
+            'gift_list_id' => ['required', 'integer'],
             'category' => ['required', 'string', Rule::in(array_keys(Gift::CATEGORIES))],
             'name' => ['required', 'string', 'max:255'],
             'price' => ['nullable', 'string', 'max:100'],
@@ -43,9 +56,15 @@ class GiftController extends Controller
             'note' => ['nullable', 'string'],
         ]);
 
-        $request->user()->gifts()->create($validated);
+        $list = $request->user()->giftLists()->findOrFail($validated['gift_list_id']);
 
-        return back()->with('status', '¡Artículo añadido con éxito a tu lista!');
+        $list->gifts()->create([
+            ...$validated,
+            'user_id' => $request->user()->id,
+        ]);
+
+        return redirect()->route('home', ['list' => $list->id])
+            ->with('status', '¡Artículo añadido con éxito a tu lista!');
     }
 
     /**
@@ -66,7 +85,8 @@ class GiftController extends Controller
 
         $gift->update($validated);
 
-        return back()->with('status', '¡Artículo actualizado correctamente!');
+        return redirect()->route('home', ['list' => $gift->gift_list_id])
+            ->with('status', '¡Artículo actualizado correctamente!');
     }
 
     /**
@@ -76,9 +96,10 @@ class GiftController extends Controller
     {
         abort_if($gift->user_id !== $request->user()->id, 403);
 
+        $listId = $gift->gift_list_id;
         $gift->delete();
 
-        return back()->with('status', '¡Artículo eliminado de tu lista!');
+        return redirect()->route('home', ['list' => $listId])
+            ->with('status', '¡Artículo eliminado de tu lista!');
     }
 }
-

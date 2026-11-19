@@ -1,4 +1,5 @@
 <!-- Modal para Crear / Modificar Artículos -->
+@props(['activeList' => null])
 <div id="gift-modal"
     class="fixed inset-0 z-100 hidden items-center justify-center p-4 bg-slate-900/60 dark:bg-slate-950/80 backdrop-blur-xs transition-opacity duration-200"
     role="dialog" aria-modal="true" aria-labelledby="modal-title">
@@ -26,6 +27,7 @@
                 @csrf
                 <input type="hidden" name="_method" id="gift-modal-method" value="POST">
                 <input type="hidden" name="category" id="gift-modal-category" value="ropa">
+                <input type="hidden" name="gift_list_id" id="gift-modal-list-id" value="{{ $activeList?->id }}">
 
                 <!-- Categoría Selector visible si se desea cambiar -->
                 <div>

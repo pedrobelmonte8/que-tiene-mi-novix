@@ -37,6 +37,25 @@
                 @enderror
             </div>
 
+            <!-- Campo Nombre de la Primera Lista -->
+            <div>
+                <label for="first_list_name" class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1.5">
+                    Nombre de tu primera lista <span class="text-rose-600">*</span>
+                </label>
+                <input
+                    type="text"
+                    id="first_list_name"
+                    name="first_list_name"
+                    value="{{ old('first_list_name') }}"
+                    required
+                    placeholder="Ej. Mi novix, Cumpleaños de Lucas, Ideas Navidad..."
+                    class="w-full px-3.5 py-2.5 rounded-xl border @error('first_list_name') border-rose-400 bg-rose-50/30 text-rose-900 @else border-slate-200 bg-slate-50/50 text-slate-800 @enderror text-sm focus:outline-hidden focus:ring-2 focus:ring-rose-400 focus:bg-white transition-all"
+                >
+                @error('first_list_name')
+                    <p class="text-xs text-rose-600 mt-1 font-medium">{{ $message }}</p>
+                @enderror
+            </div>
+
             <!-- Campo Correo Electrónico -->
             <div>
                 <label for="email" class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1.5">

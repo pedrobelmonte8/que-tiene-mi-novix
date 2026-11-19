@@ -59,6 +59,7 @@ class AuthController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:users,email'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'first_list_name' => ['required', 'string', 'max:100'],
         ]);
 
         $user = User::create([
@@ -67,11 +68,16 @@ class AuthController extends Controller
             'password' => Hash::make($validated['password']),
         ]);
 
+        $firstList = $user->giftLists()->create([
+            'name' => $validated['first_list_name'],
+        ]);
+
         Auth::login($user);
 
         $request->session()->regenerate();
+        $request->session()->put('active_list_id', $firstList->id);
 
-        return redirect(route('home'))->with('status', '¡Cuenta creada con éxito! Bienvenido/a.');
+        return redirect(route('home', ['list' => $firstList->id]))->with('status', '¡Cuenta creada con éxito! Bienvenido/a.');
     }
 
     /**

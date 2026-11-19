@@ -26,10 +26,12 @@ class ExampleTest extends TestCase
     public function test_authenticated_users_can_view_the_application(): void
     {
         $user = User::factory()->create();
+        $user->giftLists()->create(['name' => 'Lista de mi novix']);
 
         $response = $this->actingAs($user)->get('/');
 
         $response->assertStatus(200);
-        $response->assertSee('¿Qué regalar a mi novix?');
+        $response->assertSee('¿Qué regalar a');
+        $response->assertSee('Lista de mi novix');
     }
 }

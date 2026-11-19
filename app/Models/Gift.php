@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-#[Fillable(['user_id', 'category', 'name', 'price', 'store', 'badge', 'note'])]
+#[Fillable(['user_id', 'gift_list_id', 'category', 'name', 'price', 'store', 'badge', 'note'])]
 class Gift extends Model
 {
     use HasFactory;
@@ -63,5 +63,13 @@ class Gift extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    /**
+     * Get the gift list that contains the gift.
+     */
+    public function giftList(): BelongsTo
+    {
+        return $this->belongsTo(GiftList::class);
     }
 }

@@ -65,7 +65,7 @@
                         @hasSection('content')
                             @yield('content')
                         @else
-                            <x-gift-list :categories="$categories ?? null" />
+                            <x-gift-list :categories="$categories ?? null" :userLists="$userLists ?? null" :activeList="$activeList ?? null" />
                         @endif
                     @else
                         <x-login />

@@ -38,4 +38,12 @@ class User extends Authenticatable
     {
         return $this->hasMany(Gift::class);
     }
+
+    /**
+     * Get the gift lists created by the user.
+     */
+    public function giftLists(): HasMany
+    {
+        return $this->hasMany(GiftList::class);
+    }
 }

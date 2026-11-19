@@ -80,6 +80,7 @@ class AuthTest extends TestCase
             'email' => 'pareja@example.com',
             'password' => 'password123',
             'password_confirmation' => 'password123',
+            'first_list_name' => 'Lista de San Valentín',
         ]);
 
         $this->assertAuthenticated();
@@ -87,7 +88,26 @@ class AuthTest extends TestCase
             'email' => 'pareja@example.com',
             'name' => 'Mi Pareja',
         ]);
-        $response->assertRedirect(route('home'));
+        $this->assertDatabaseHas('gift_lists', [
+            'name' => 'Lista de San Valentín',
+        ]);
+        $response->assertRedirect();
+    }
+
+    /**
+     * Test register requires first list name.
+     */
+    public function test_register_requires_first_list_name(): void
+    {
+        $response = $this->post('/register', [
+            'name' => 'Mi Pareja',
+            'email' => 'pareja2@example.com',
+            'password' => 'password123',
+            'password_confirmation' => 'password123',
+        ]);
+
+        $response->assertSessionHasErrors('first_list_name');
+        $this->assertGuest();
     }
 
     /**
@@ -117,9 +137,11 @@ class AuthTest extends TestCase
         $loginResponse->assertDontSee('Volver a la lista de regalos');
 
         $user = User::factory()->create(['name' => 'Carlos']);
+        $user->giftLists()->create(['name' => 'Lista de mi novix']);
         $authResponse = $this->actingAs($user)->get('/');
         $authResponse->assertSee('Carlos');
         $authResponse->assertSee('Salir');
-        $authResponse->assertSee('¿Qué regalar a mi novix?');
+        $authResponse->assertSee('¿Qué regalar a');
+        $authResponse->assertSee('Lista de mi novix');
     }
 }
