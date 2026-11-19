@@ -11,11 +11,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
         @if (($currentView ?? '') === 'login')
-            Iniciar Sesión
+            Iniciar Sesión - WishVault
         @elseif (($currentView ?? '') === 'register')
-            Crear Cuenta
+            Crear Cuenta - WishVault
         @else
-            Ideas de Regalos
+            WishVault - Ideas de Regalos
         @endif
     </title>
     {{-- Aplicar tema oscuro antes del paint para evitar destellos --}}
@@ -74,7 +74,7 @@
             </main>
 
                 <footer class="text-center py-6 text-xs text-slate-400 dark:text-slate-600">
-                    ¿Qué regalar a mi novix? · Hecho con ❤️ para tu persona favorita.
+                    WishVault · Hecho con ❤️ para tu persona favorita.
                 </footer>
 
                 <!-- Script para comportamiento de acordeón ("uno a la vez cada vez") -->

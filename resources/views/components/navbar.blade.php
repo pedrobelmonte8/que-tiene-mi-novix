@@ -7,7 +7,7 @@
             </span>
                 <span
                     class="font-extrabold text-slate-800 dark:text-slate-100 text-sm tracking-tight group-hover:text-rose-600 dark:group-hover:text-rose-400 transition-colors">
-                    NovixGifts
+                    WishVault
                 </span>
     </a>
 
